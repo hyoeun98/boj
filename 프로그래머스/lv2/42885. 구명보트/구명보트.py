@@ -1,17 +1,12 @@
 def solution(people, limit):
-    answer, weight = 0, 0
-    people.sort(reverse = True)
+    answer = 0
+    people.sort()
 
-    for i in people:
-        weight = i
-        
-        for j in range(-1, -6, -1):
-            weight += people[j]
-            if weight > limit:
-                answer += 1
-                break
-                          
-            else:
-                del people[j]
-                
-    return answer
+    a = 0
+    b = len(people) - 1
+    while a < b :
+        if people[b] + people[a] <= limit :
+            a += 1
+            answer += 1
+        b -= 1
+    return len(people) - answer
