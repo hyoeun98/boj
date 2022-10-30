@@ -1,19 +1,10 @@
-from collections import deque
 def solution(prices):
-    answer = []
-    stack = deque(prices)
-    while stack:
-        a = stack.popleft()
-        search = False
-        for i, v in enumerate(stack):
-            if v < a:
-                answer.append(i+1)
-                search = True
-                break
-                
+    answer = [0] * len(prices)
+    for i in range(len(prices)):
+        for j in range(i+1, len(prices)):
+            if prices[i] <= prices[j]:
+                answer[i] += 1
             else:
-                pass
-            
-        if not search:
-            answer.append(len(stack))
+                answer[i] += 1
+                break
     return answer
