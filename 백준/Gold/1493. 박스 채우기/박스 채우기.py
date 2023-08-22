@@ -1,6 +1,13 @@
 import sys
 
 def solution():
+    l, w, h = map(int, sys.stdin.readline().split())
+    n = int(sys.stdin.readline())
+    cube = []
+    for _ in range(n):
+        cube.append(list(map(int, sys.stdin.readline().split())))
+    cube.reverse()
+
     answer = 0
     volume = l * w * h
     current_cube_num = 0
@@ -17,14 +24,5 @@ def solution():
         print(answer)
     else:
         print(-1)
-
-    
-
-l, w, h = map(int, sys.stdin.readline().split())
-n = int(sys.stdin.readline())
-cube = []
-for _ in range(n):
-    cube.append(list(map(int, sys.stdin.readline().split())))
-cube.reverse()
 
 solution()
