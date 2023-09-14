@@ -20,7 +20,7 @@ def bfs(board):
             ny, nx = y + dy[k], x + dx[k]
             if not(0 <= ny < n and 0 <= nx < m):
                 continue
-            if visited[ny][nx][flag] == 0 and visited[ny][nx][flag - 1] == 1:
+            if flag == 0 and visited[ny][nx][flag] == 0 and visited[ny][nx][flag - 1] == 1:
                 pass
             elif visited[ny][nx][flag] == 0:
                 pass
