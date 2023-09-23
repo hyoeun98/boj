@@ -1,27 +1,25 @@
 import sys
 from collections import deque
 def solution():
-    queue = deque()
-    queue.append([n])
-    visited = set()
-    while queue:
-        arr = queue.popleft()
-        num = arr[-1]
-        # print(arr, num)
-        if num == 1:
-            print(len(arr) - 1)
-            print(*arr)
-            break
-        if num % 3 == 0 and (num // 3) not in visited:
-            queue.append(arr + [num // 3])
-            visited.add(num // 3)
-        if num % 2 == 0 and (num // 2) not in visited:
-            queue.append(arr + [num // 2])
-            visited.add(num // 2)
-        if (num - 1) not in visited:
-            queue.append(arr + [num - 1])
-            visited.add(num - 1)
+    dp = [[[], 0] for _ in range(n + 1)]
+    dp[1][0] = [1]
+    dp[1][1] = 0
+
+    for i in range(2, n + 1):
+        dp[i][0] = dp[i - 1][0] + [i]
+        dp[i][1] = dp[i - 1][1] + 1
+
+        if i % 2 == 0:
+            if dp[i][1] > dp[i // 2][1] + 1:
+                dp[i][0] = dp[i // 2][0] + [i]
+                dp[i][1] = dp[i // 2][1] + 1
     
-    
+        if i % 3 == 0:
+            if dp[i][1] > dp[i // 3][1] + 1:
+                dp[i][0] = dp[i // 3][0] + [i]
+                dp[i][1] = dp[i // 3][1] + 1
+
+    print(dp[-1][1])
+    print(*dp[-1][0][::-1])
 n = int(sys.stdin.readline())
 solution()
