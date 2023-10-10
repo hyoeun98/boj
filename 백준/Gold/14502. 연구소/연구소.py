@@ -1,16 +1,18 @@
 import sys
 from collections import deque
+import itertools as it
 import copy
 
 dy = [0, 0, 1, -1]
 dx = [1, -1, 0, 0]
-answer = 0
-def bfs(board, virus):
+
+def bfs(board, virus, wall):
+    
     safe_zone = 0
     queue = deque(virus)
     visited = copy.deepcopy(board)
-    global answer
-
+    for i, j in wall:
+        visited[i][j] = 1
     while queue:
         y, x = queue.popleft()
         for k in range(4):
@@ -23,30 +25,28 @@ def bfs(board, virus):
 
     for i in range(n):
         safe_zone += visited[i].count(0)
-    answer = max(answer, safe_zone)
 
+    return safe_zone
+    
 def solution():
     board = []
     for _ in range(n):
         board.append(list(map(int, sys.stdin.readline().split())))
     
+    space = []
     virus = []
     for i in range(n):
         for j in range(m):
-            if board[i][j] == 2:
+            if board[i][j] == 0:
+                space.append((i, j))
+            elif board[i][j] == 2:
                 virus.append((i, j))
-                
-    def make_wall(cnt):
-        if cnt == 3:
-            bfs(board, virus)
-            return
-        for i in range(n):
-            for j in range(m):
-                if board[i][j] == 0:
-                    board[i][j] = 1
-                    make_wall(cnt+1)
-                    board[i][j] = 0
-    make_wall(0)
+    
+    walls = list(it.combinations(space, 3))
+    answer = 0
+    for wall in walls:
+        answer = max(answer, bfs(board, virus, wall))
+
     print(answer)
 n, m = map(int, sys.stdin.readline().split())
 
