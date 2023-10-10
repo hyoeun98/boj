@@ -2,7 +2,7 @@ import sys
 import itertools as it
 
 def solution():
-    arr = list(it.permutations(range(1, n + 1), m))
+    arr = it.permutations(range(1, n + 1), m)
     for i in arr:
         print(*i)
     
