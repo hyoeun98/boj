@@ -14,4 +14,4 @@ def solution():
     
 n, m = map(int, sys.stdin.readline().split())
 arr = []
-solution()
+back_tracking()
