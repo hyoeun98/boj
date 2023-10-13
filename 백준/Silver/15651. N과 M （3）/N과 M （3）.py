@@ -1,7 +1,7 @@
 import sys
 def back_tracking():
     if len(arr) == m:
-        print(*arr)
+        print(' '.join(map(str, arr)))
         return
 
     for i in range(1, n + 1):
