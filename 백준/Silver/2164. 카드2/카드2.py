@@ -6,6 +6,6 @@ arr = deque(range(1, n + 1))
 
 while len(arr) > 1:
     del arr[0]
-    arr.append(arr.popleft())
+    arr.rotate(-1)
     
 print(arr[0])
