@@ -11,20 +11,26 @@ for _ in range(n):
     board.extend(temp)
 
 answer = [1e12 ,0]
+board.sort(reverse = True)
 for i in range(max_depth, min_depth - 1, -1):
     block = b
     time = 0
+    invalid = False
     for j in board:
         if j > i:
             block += j - i
             time += (j - i) * 2
         elif j < i:
-            block -= i - j
-            time += i - j
+            if block >= i - j:
+                block -= i - j
+                time += i - j
+            else:
+                invalid = True
+                break
         else:
             continue
     
-    if block >= 0:
+    if not invalid:
         if answer[0] > time:
             answer = [time, i]
                     
