@@ -11,12 +11,11 @@ for i, v in enumerate(arr):
     if v[0] == k:
         answer = v[1]
         break
-    
-for i, v in enumerate(arr[:i]):
+for i, v in enumerate(arr):
     if v[1] == answer:
         print(i + 1)
         break
     
 else:
-    print(i)
+    print(i + 1)
     
