@@ -22,5 +22,5 @@ while start <= end:
         end = mid - 1
 
     mid = (start + end) // 2
-    
-print(answer)
+
+print(end)
