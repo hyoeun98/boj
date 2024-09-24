@@ -6,14 +6,7 @@ while flag:
     if (l * (l - 1) // 2) > n:
         break
     
-    i = max(0, n // l - l // 2 - 2)
-    temp = i * l + (l * (l - 1) // 2)
-    if temp == n:
-        answer = [a for a in range(i, i + l)]
-        flag = False
-        break
-    
-    i += 1
+    i = max(0, n // l - l // 2 - 1)
     temp = i * l + (l * (l - 1) // 2)
     if temp == n:
         answer = [a for a in range(i, i + l)]
