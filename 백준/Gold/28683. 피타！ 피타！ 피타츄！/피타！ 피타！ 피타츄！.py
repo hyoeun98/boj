@@ -5,12 +5,9 @@ if math.sqrt(n).is_integer():
     print(-1)
 else:
     answer = 0
-    for i in range (1,int(math.sqrt(n/2))+1):
-        j = n - i**2
-        if math.sqrt(j) - int(math.sqrt(j)) == 0:
+    for i in range(1, int(math.sqrt(n / 2)) + 1):
+        if math.sqrt(n - i ** 2).is_integer():
             answer += 1
-        else:
-            continue
 
     for i in range(1, int(math.sqrt(n)) + 1):
         if n % i == 0:
