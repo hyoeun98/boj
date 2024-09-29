@@ -18,6 +18,7 @@ while len(visited) < v:
         visited.add(vertex)
         answer += weight
         for i, j in graph[vertex]:
-            heappush(queue, (j, i))
+            if i not in visited:
+                heappush(queue, (j, i))
 print(answer)
     
