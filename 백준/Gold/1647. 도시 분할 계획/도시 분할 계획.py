@@ -15,7 +15,7 @@ for _ in range(m):
 queue = []
 queue.append((0, 1))
 max_weight = 0
-while queue:
+while len(visited) < n:
     weight, vertex = heappop(queue)
     if vertex not in visited:
         max_weight = max(max_weight, weight)
